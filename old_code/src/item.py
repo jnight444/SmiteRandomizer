@@ -1,4 +1,4 @@
-from src.object import Object
+from old_code.src.object import Object
 
 
 class Item(Object):

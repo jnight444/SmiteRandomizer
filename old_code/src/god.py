@@ -1,4 +1,4 @@
-from src.enums import Role, Pantheon, AttackType, DamageType
+from old_code.src.enums import Role, Pantheon, AttackType, DamageType
 
 
 class God:

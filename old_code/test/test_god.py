@@ -1,7 +1,7 @@
 import unittest
 
-from src.god import God
-from src.enums import Role, Pantheon, AttackType, DamageType
+from old_code.src.god import God
+from old_code.src.enums import Role, Pantheon, AttackType, DamageType
 
 param_list = [
     ({'role': 'role', 'pantheon': 'pantheon', 'attacktype': 'attacktype',
