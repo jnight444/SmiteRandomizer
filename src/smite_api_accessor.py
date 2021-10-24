@@ -4,8 +4,8 @@ import json
 from pyrez.api.SmiteAPI import SmiteAPI
 
 dev_id = '4104'
-auth_key = 'BA2D99AF534E4E49B2842D88FC9B4945'
-session_id = '73248773A56B462FB309DB0D6B541008'
+auth_key = ''
+session_id = ''
 my_player_id = '709261308'
 
 smite = SmiteAPI(dev_id, auth_key, sessionId=session_id)
