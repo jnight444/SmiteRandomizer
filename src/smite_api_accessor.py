@@ -3,11 +3,11 @@ import json
 
 from pyrez.api.SmiteAPI import SmiteAPI
 
-from src.keys import dev_id, auth_key
+from src import keys
 
-session_id = '73248773A56B462FB309DB0D6B541008'
+session_id = '1802F16D0CC04561B8D9A758C2BD12B7'
 
-smite = SmiteAPI(dev_id, auth_key, sessionId=session_id)
+smite = SmiteAPI(keys.dev_id, keys.auth_key, sessionId=session_id)
 
 
 def get_gods():
