@@ -14,10 +14,15 @@ h1 {
 	font-weight: 500;
 }
 
+.row-1 {
+    display: flex;
+    flex-flow: row;
+}
+
 .container {
 	margin: 0 auto;
 	padding: 16px;
-	width: 1000px;
+	width: 100vw;
 	height: 100vh;
 	background-color: #eee;
 	box-shadow: 0px 0px 30px rgba(0,0,0,.2);
@@ -28,8 +33,13 @@ h1 {
   flex-flow: column;
 }
 
-.separator {
+.horizontal-separator {
     border-bottom: 1px solid #ccc;
+}
+
+.vertical-separator {
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
 }
 
 .title {
@@ -40,7 +50,9 @@ h1 {
 
 .god-row {
   width: 100%; /* fit to what it can */
-  justify-content: center; /* puts the god image and name span elements in the center of the div */
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
 }
 
 .god-name {
@@ -64,13 +76,16 @@ h1 {
 
 .items-row {
 	display: flex;
-	flex-flow: row;
-	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
 .item-image {
 	width: 100px;
 	height: 100px;
+}
+
+.items-container {
+    padding-left: 10px;
 }
 
 .img-with-text {

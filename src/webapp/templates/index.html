@@ -10,41 +10,32 @@
 	
 	<body>
 		<div class="container">
-			<div class="title separator">
+			<div class="title horizontal-separator">
 				<p>Random God Builder</p>
 			</div>
 
-			<div class="god-container"> <!-- you put separator here for the class name but i think it should be related to the god itself -->
-				<h1>God</h1>
-				<div class="god-row">
-					<img src="{{ build.god.icon_url }}" title="" class="god-image" />
-					<span class="god-name">{{ build.god.name }}</span>
+			<div class="row-1">
+				<div class="god-container vertical-separator">
+					<h1>God</h1>
+					<div class="god-row">
+						<img src="{{ build.god.icon_url }}" title="" class="god-image" />
+						<span class="god-name">{{ build.god.name }}</span>
+					</div>
 				</div>
-			</div>
-			
-			<div class="items-container">
-				<h1>Items</h1>
-				<div class="items-row">
-					{% for item in items %}
-						<div class="img-with-text">
-							<img src="{{ item.url }}" class="item-image" />
-							<span class="item-name" id="{{ item.name }}">{{ item.name }}</span>
-						</div>
-					{% endfor %}
+
+				<div id="items" class="items-container">
+					<h1>Items</h1>
+					<div id class="items-row">
+						{% for item in items %}
+							<div class="img-with-text">
+								<img src="{{ item.url }}" class="item-image" />
+								<span class="item-name" id="{{ item.name }}">{{ item.name }}</span>
+							</div>
+						{% endfor %}
+					</div>
 				</div>
 			</div>
 
-			<div class="items-container">
-				<h1>Relics</h1>
-				<div class="items-row">
-					{% for relic in build.relics %}
-						<div class="img-with-text">
-							<img src="{{ relic.url }}" class="item-image" />
-							<span class="item-name" id="{{ relic.name }}">{{ relic.name }}</span>
-						</div>
-					{% endfor %}
-				</div>
-			</div>
 		</div>
 	</body>
 </html>
