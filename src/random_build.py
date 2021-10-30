@@ -1,7 +1,9 @@
 from typing import List
 
+from src.ability_handler import AbilityHandler
 from src.god_handler import GodHandler
 from src.item_handler import ItemHandler
+from src.models.ability import Ability
 from src.models.god import God
 from src.models.item import Item
 
@@ -18,6 +20,7 @@ class RandomBuild:
     items: List[Item]
     relics: List[Item]
     consumables: List[Item]
+    abilities: List[Ability]
 
     def __init__(self):
         self.god = self.god_handler.get_random_god()
@@ -25,6 +28,7 @@ class RandomBuild:
         self.items = self.item_handler.get_random_items(god=self.god)
         self.relics = self.item_handler.get_random_relics()
         self.consumables = self.item_handler.get_random_consumables(god=self.god)
+        self.abilities = AbilityHandler(self.god).get_abilities()
 
     def print_build(self):
         print(self.get_build_string())
@@ -46,6 +50,15 @@ class RandomBuild:
         build_string += 'Consumables:' + END_LINE
         for consumable in self.consumables:
             build_string += f' - {consumable.name}' + END_LINE
+        return build_string
+
+    def get_abilitiy_order(self) -> List[Ability]:
+        abilities: List[Ability] = []
+        player_level: int = 1
+
+
+
+        return None
 
 
 if __name__ == '__main__':

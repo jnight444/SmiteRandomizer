@@ -27,11 +27,11 @@ class God:
         self.role = Role[json['Roles']]
         self.split_attack_info(json['Type'])
         self.title = json['Title']
-        self.ability_1 = Ability(json['Ability_1'])
-        self.ability_2 = Ability(json['Ability_2'])
-        self.ability_3 = Ability(json['Ability_3'])
-        self.ultimate = Ability(json['Ability_4'])
-        self.passive = Ability(json['Ability_5'])
+        self.ability_1 = Ability(json['Ability_1'], 1)
+        self.ability_2 = Ability(json['Ability_2'], 2)
+        self.ability_3 = Ability(json['Ability_3'], 3)
+        self.ultimate = Ability(json['Ability_4'], 4)
+        self.passive = Ability(json['Ability_5'], 5)
         self.ident = int(json['id'])
         self.icon_url = json['godIcon_URL']
         self.card_url = json['godCard_URL']

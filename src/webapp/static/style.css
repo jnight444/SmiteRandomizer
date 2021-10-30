@@ -1,4 +1,84 @@
 body {
-    background: red;
-    color: yellow;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+img {
+	border: 1px solid black;
+}
+
+h1 {
+	font-weight: 500;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 16px;
+	width: 1000px;
+	height: 100vh;
+	background-color: #eee;
+	box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+.god-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.separator {
+    border-bottom: 1px solid #ccc;
+}
+
+.title {
+    font-weight: 1000;
+    text-align: center;
+    font-size: 40px;
+}
+
+.god-row {
+  width: 100%; /* fit to what it can */
+  justify-content: center; /* puts the god image and name span elements in the center of the div */
+}
+
+.god-name {
+  margin-top: 1rem; /* 1rem = 16px unless changed in the html css rule set */
+}
+
+.god-image {
+  width: 200px; /* set these, idk what u want */
+  height: 200px;
+  border: 1px solid black; /* optional if you want it to have an outline */
+}
+
+.item {
+	display: flex;
+	flex-flow: column;
+}
+
+.item-name {
+	margin-top: 8px;
+}
+
+.items-row {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+}
+
+.item-image {
+	width: 100px;
+	height: 100px;
+}
+
+.img-with-text {
+    text-align: center;
+    width: 200px;
+}
+
+.img-with-text img {
+    display: block;
+    margin: 0 auto;
 }

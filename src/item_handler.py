@@ -14,6 +14,14 @@ def get_all_active_items() -> List[Item]:
     return [item for item in get_all_items() if item.is_active]
 
 
+def filter_specific_god_cases(god, item_list):
+    if 'Baron' not in god.name:
+        item_list = [i for i in item_list if 'Baron' not in i.name]
+    if 'Ratatoskr' not in god.name:
+        item_list = [i for i in item_list if 'Acorn' not in i.name]
+    return item_list
+
+
 class ItemHandler:
     item_list: List[Item] = []
 
@@ -36,12 +44,7 @@ class ItemHandler:
         # Filter based on the given god
         if god is not None:
             item_list = [item for item in item_list if god.role in item.roles]
-
-            # Filter for specific god items
-            if 'Baron' not in god.name:
-                item_list = [i for i in item_list if 'Baron' not in i.name]
-            if 'Ratatoskr' not in god.name:
-                item_list = [i for i in item_list if 'Acorn' not in i.name]
+            item_list = filter_specific_god_cases(god, item_list)
 
         if tier is not None:
             item_list = [item for item in item_list if item.tier == tier]
