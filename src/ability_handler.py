@@ -34,6 +34,7 @@ class AbilityHandler:
 
     def __init__(self, god: God):
         self.god = god
+        self.abilities = []
 
     def get_abilities(self):
 

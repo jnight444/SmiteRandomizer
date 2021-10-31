@@ -10,12 +10,17 @@
 	
 	<body>
 		<div class="container">
-			<div class="title horizontal-separator">
-				<p>Random God Builder</p>
+			<div class="title">
+				<span class="title">Random God Builder</span>
 			</div>
 
+			<div class="horizontal-separator"></div>
+
 			<div class="row-1">
-				<div class="god-container vertical-separator">
+				<div class="vertical-separator-left">
+
+				</div>
+				<div class="god-container vertical-separator-right">
 					<h1>God</h1>
 					<div class="god-row">
 						<img src="{{ build.god.icon_url }}" title="" class="god-image" />
@@ -23,19 +28,60 @@
 					</div>
 				</div>
 
-				<div id="items" class="items-container">
+				<div id="items" class="items-container vertical-separator-right">
 					<h1>Items</h1>
-					<div id class="items-row">
+					<div class="items-row">
 						{% for item in items %}
-							<div class="img-with-text">
+							<div class="item-with-text">
 								<img src="{{ item.url }}" class="item-image" />
 								<span class="item-name" id="{{ item.name }}">{{ item.name }}</span>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
+
+				<div id="relics" class="items-container vertical-separator-right">
+					<h1>Relics</h1>
+					<div class="relics-row">
+						{% for relic in build.relics %}
+							<div class="item-with-text">
+								<img src="{{ relic.url }}" class="item-image" />
+								<span class="item-name" id="{{ relic.name }}">{{ relic.name }}</span>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+
+				<div id="consumables" class="items-container vertical-separator-right">
+					<h1>Consumables</h1>
+					<div class="consumables-row">
+						{% for consumable in build.consumables %}
+							<div class="item-with-text">
+								<img src="{{ consumable.url }}" class="item-image" />
+								<span class="item-name" id="{{ consumable.name }}">{{ consumable.name }}</span>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 			</div>
 
+			<div class="horizontal-separator"></div>
+
+			<div class="vertical-separator-right vertical-separator-left">
+				<h1>Abilities</h1>
+				<div class="row-2">
+
+					{% for ability in build.abilities %}
+					<div class="ability-with-text">
+						<span class="player-level">Level {{ loop.index }}</span>
+						<img src="{{ ability.url }}">
+						<span class="item-name">Ability {{ ability.number }}</span>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="horizontal-separator"></div>
 		</div>
 	</body>
 </html>
