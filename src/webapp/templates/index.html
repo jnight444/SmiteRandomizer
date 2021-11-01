@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>God Generator</title>
-		<link rel="stylesheet" href="/static/style.css" />
+		<title>Random God Builder</title>
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link href="static/fonts/stylesheet.css" type="text/css" rel="stylesheet"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet"> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="{{url_for('static', filename='js/test.js')}}"></script>
 	</head>
 	
 	<body>
-		<div class="container">
-			<div class="title">
-				<span class="title">Random God Builder</span>
-			</div>
+		<div id="top-bar" class="top-bar">
+			<span class="top-bar-left-text">Got bored one day</span>
+			<span id="title" class="title">Random God Builder</span>
+			<span class="author">Made By Jared Nightingale</span>				
+		</div>
 
+		<div class="container">
 			<div class="horizontal-separator"></div>
 
-			<div class="row-1">
-				<div class="vertical-separator-left">
+			<div class="row-1 vertical-separator-left vertical-separator-right">
 
-				</div>
-				<div class="god-container vertical-separator-right">
+				<div id="god-column" class="god-container vertical-separator-right">
 					<h1>God</h1>
 					<div class="god-row">
-						<img src="{{ build.god.icon_url }}" title="" class="god-image" />
-						<span class="god-name">{{ build.god.name }}</span>
+						<div>
+							<img id="god-image" src="{{ build.god.icon_url }}" title="" class="god-image" />
+							<div id="god-description" class="description">
+								<span class="description-text">{{ build.god.title }}</span>
+								<span class="description-text">Role: {{ build.god.role.name }}</span>
+								<span class="description-text">Pantheon: {{ build.god.pantheon.name }}</span>
+								<span class="description-text">Attack Type: {{ build.god.attack_type.name }}</span>
+								<span class="description-text">Attack Range: {{ build.god.attack_range.name }}</span>
+							</div>
+						</div>
+						<span class="god-name">{{ build.god.name|lower }}</span>
+						<a class="re-roll" href=".">Re-roll</a>
 					</div>
 				</div>
 
-				<div id="items" class="items-container vertical-separator-right">
+				<div id="item-column" class="items-container vertical-separator-right">
 					<h1>Items</h1>
 					<div class="items-row">
 						{% for item in items %}
 							<div class="item-with-text">
-								<img src="{{ item.url }}" class="item-image" />
+								<div>
+									<img id="item-img-{{ loop.index}}" src="{{ item.url }}" class="item-image" />
+									<div id="item-description-{{ loop.index }}" class="description">
+										<span class="description-text">Price: {{ item.price }}</span>
+										{% for key, value in item.attributes.items() %}
+											<span class="description-text">{{ key }}: {{ value }}</span>
+										{% endfor %}}
+										<span class="description-text">{{ item.passive }}</span>
+									</div>
+								</div>
 								<span class="item-name" id="{{ item.name }}">{{ item.name }}</span>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
 
-				<div id="relics" class="items-container vertical-separator-right">
+				<div id="relics-column" class="items-container vertical-separator-right">
 					<h1>Relics</h1>
 					<div class="relics-row">
 						{% for relic in build.relics %}
 							<div class="item-with-text">
-								<img src="{{ relic.url }}" class="item-image" />
+								<div>
+									<img src="{{ relic.url }}" class="item-image" />
+									<div id="item{{ loop.index }}">
+										
+									</div>
+								</div>
 								<span class="item-name" id="{{ relic.name }}">{{ relic.name }}</span>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
 
-				<div id="consumables" class="items-container vertical-separator-right">
+				<div id="consumables-column" class="items-container">
 					<h1>Consumables</h1>
 					<div class="consumables-row">
 						{% for consumable in build.consumables %}

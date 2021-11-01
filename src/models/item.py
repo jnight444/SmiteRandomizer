@@ -6,6 +6,7 @@ from src.models.enums import ItemType, Role
 class Item:
     name: str
     description: str
+    passive: str
     url: str
     tier: int
     price: int
@@ -20,6 +21,7 @@ class Item:
     def __init__(self, json):
         self.name = json['DeviceName']
         self.description = json['ItemDescription']['Description']
+        self.passive = json['ItemDescription']['SecondaryDescription']
         self.url = json['itemIcon_URL']
         self.tier = int(json['ItemTier'])
         self.price = int(json['Price'])

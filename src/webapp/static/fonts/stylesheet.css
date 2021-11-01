@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'Penumbra Flare Std';
+    src: url('PenumbraFlareStd-Regular.woff2') format('woff2'),
+        url('PenumbraFlareStd-Regular.woff') format('woff');
+}
+

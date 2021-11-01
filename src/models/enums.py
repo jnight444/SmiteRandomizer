@@ -36,6 +36,7 @@ class AttackType(Enum):
 class AttackRange(Enum):
     Ranged = auto()
     Melee = auto()
+    NoAuto = None
 
 
 class ItemType(Enum):

@@ -44,4 +44,5 @@ class God:
             self.attack_type = AttackType[type_list[1].strip()]
         else:
             self.attack_type = AttackType[type_list[0].strip()]
+            self.attack_range = 'None'
 
