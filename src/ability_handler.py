@@ -1,8 +1,6 @@
 import random
-from typing import List
 
-from src.god_handler import GodHandler
-from src.models.ability import Ability
+from src.handlers.god_handler import GodHandler
 from src.models.god import God
 
 

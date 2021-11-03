@@ -1,8 +1,8 @@
 from typing import List
 
 from src.ability_handler import AbilityHandler
-from src.god_handler import GodHandler
-from src.item_handler import ItemHandler
+from src.handlers.god_handler import GodHandler
+from src.handlers.item_handler import ItemHandler
 from src.models.ability import Ability
 from src.models.god import God
 from src.models.item import Item

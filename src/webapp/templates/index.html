@@ -8,7 +8,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet"> 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="{{url_for('static', filename='js/test.js')}}"></script>
+		<script src="{{url_for('static', filename='js/js.js')}}"></script>
 	</head>
 	
 	<body>
@@ -47,7 +47,7 @@
 						{% for item in items %}
 							<div class="item-with-text">
 								<div>
-									<img id="item-img-{{ loop.index}}" src="{{ item.url }}" class="item-image" />
+									<img id="item-img-{{ loop.index }}" src="{{ item.url }}" class="item-image" />
 									<div id="item-description-{{ loop.index }}" class="description">
 										<span class="description-text">Price: {{ item.price }}</span>
 										{% for key, value in item.attributes.items() %}
@@ -62,29 +62,38 @@
 					</div>
 				</div>
 
-				<div id="relics-column" class="items-container vertical-separator-right">
+				<div id="relics-column" class="relics-container vertical-separator-right">
 					<h1>Relics</h1>
 					<div class="relics-row">
 						{% for relic in build.relics %}
 							<div class="item-with-text">
 								<div>
-									<img src="{{ relic.url }}" class="item-image" />
-									<div id="item{{ loop.index }}">
-										
+									<img id="relic-img-{{ loop.index }}" src="{{ relic.url }}" class="item-image" />
+									<div id="relic-description-{{ loop.index }}" class="description">
+										<span class="description-text">{{ relic.passive }}</span>
 									</div>
 								</div>
-								<span class="item-name" id="{{ relic.name }}">{{ relic.name }}</span>
+							<span class="item-name" id="{{ relic.name }}">{{ relic.name }}</span>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
 
-				<div id="consumables-column" class="items-container">
+				<div id="consumables-column" class="consumables-container">
 					<h1>Consumables</h1>
 					<div class="consumables-row">
 						{% for consumable in build.consumables %}
 							<div class="item-with-text">
-								<img src="{{ consumable.url }}" class="item-image" />
+								<div>
+									<img id="consumable-img-{{ loop.index }}" src="{{ consumable.url }}" class="item-image" />
+									<div id="consumable-description-{{ loop.index }}" class="description">
+										<span class="description-text">Price: {{ consumable.price }}</span>
+										{% for key, value in consumable.attributes.items() %}
+											<span class="description-text">{{ key }}: {{ value }}</span>
+										{% endfor %}}
+										<span class="description-text">{{ consumable.passive }}</span>
+									</div>
+								</div>
 								<span class="item-name" id="{{ consumable.name }}">{{ consumable.name }}</span>
 							</div>
 						{% endfor %}
@@ -94,17 +103,29 @@
 
 			<div class="horizontal-separator"></div>
 
-			<div class="vertical-separator-right vertical-separator-left">
-				<h1>Abilities</h1>
-				<div class="row-2">
-
-					{% for ability in build.abilities %}
-					<div class="ability-with-text">
-						<span class="player-level">Level {{ loop.index }}</span>
-						<img src="{{ ability.url }}">
-						<span class="item-name">Ability {{ ability.number }}</span>
+			<div id="abilities-container" class="vertical-separator-right vertical-separator-left">
+				<div class="abilities-wrapper">
+					<h1>Abilities</h1>
+					<div class="row-2">
+						{% for ability in build.abilities %}
+						<div class="ability-with-text">
+							<span class="player-level">Level {{ loop.index }}</span>
+							<div>
+								<img id="ability-img-{{ loop.index }}" src="{{ ability.url }}">
+								<div id="ability-description-{{ loop.index }}" class="description">
+									<span class="description-text">Name: {{ ability.name }}</span>
+									<span class="description-text">Cooldown: {{ ability.cooldown }}</span>
+									<span class="description-text">Cost: {{ ability.cost }}</span>
+									{% for key, value in ability.attributes.items() %}
+										<span class="description-text">{{ key }} {{ value }}</span>
+									{% endfor %}
+									<span class="description-text">{{ ability.description }}</span>
+								</div>
+							</div>
+							<span class="item-name">Ability {{ ability.number }}</span>
+						</div>
+						{% endfor %}
 					</div>
-					{% endfor %}
 				</div>
 			</div>
 

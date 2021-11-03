@@ -31,6 +31,7 @@ class Role(Enum):
 class AttackType(Enum):
     Magical = auto()
     Physical = auto()
+    Any = None
 
 
 class AttackRange(Enum):

@@ -1,7 +1,7 @@
 import json
 from random import choice, sample
 from typing import List
-from src.models.enums import ItemType
+from src.models.enums import AttackType, ItemType
 from src.models.god import God
 from src.models.item import Item
 
@@ -11,7 +11,9 @@ def get_all_items() -> List[Item]:
 
 
 def get_all_active_items() -> List[Item]:
-    return [item for item in get_all_items() if item.is_active]
+    return [item for item in get_all_items() if
+            item.is_active and
+            "Scare Tactics" not in item.name]
 
 
 def filter_specific_god_cases(god, item_list):
@@ -45,6 +47,11 @@ class ItemHandler:
         if god is not None:
             item_list = [item for item in item_list if god.role in item.roles]
             item_list = filter_specific_god_cases(god, item_list)
+
+            if item_type is not None and item_type == ItemType.Item:
+                item_list = [item for item in item_list if
+                             god.attack_type == item.attack_type or
+                             item.attack_type == AttackType.Any]
 
         if tier is not None:
             item_list = [item for item in item_list if item.tier == tier]

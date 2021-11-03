@@ -1,6 +1,6 @@
 from typing import List
 
-from src.models.enums import ItemType, Role
+from src.models.enums import AttackType, ItemType, Role
 
 
 class Item:
@@ -17,6 +17,7 @@ class Item:
     type: ItemType
     roles: List[Role]
     attributes: dict
+    attack_type: AttackType
 
     def __init__(self, json):
         self.name = json['DeviceName']
@@ -32,6 +33,15 @@ class Item:
         self.type = ItemType[json['Type']]
         self.roles = self.get_roles(json['RestrictedRoles'])
         self.attributes = self.get_attributes(json['ItemDescription']['Menuitems'])
+        self.attack_type = self.get_attack_type()
+
+    def get_attack_type(self):
+        for attribute_key in self.attributes.keys():
+            if "Physical Power" in attribute_key:
+                return AttackType.Physical
+            if "Magical Power" in attribute_key:
+                return AttackType.Magical
+        return AttackType.Any
 
     @staticmethod
     def get_roles(roles_str: str) -> List[Role]:

@@ -3,7 +3,7 @@ html { overflow-y: scroll; }
 body {
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	overflow: auto;
 	font-family: 'Penumbra Flare Std', 'Roboto', sans-serif;
 	font-weight: 300;
 	background: black;
@@ -63,14 +63,21 @@ h1 {
 	margin: 0 auto;
 	padding: 10px;
 	width: 98vw;
-    max-width: 1300px;
+    height: 100vh;
 	background-color: gray;
 	box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+    max-width: 1350px;
 }
 
 .row-1 {
     display: flex;
     flex-flow: row;
+}
+
+.abilities-wrapper {
+    max-width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .row-2 {
@@ -125,6 +132,17 @@ h1 {
 
 .items-container {
     padding-bottom: 30px;
+    max-width: 600px;
+}
+
+.relics-container {
+    padding-bottom: 30px;
+    max-width: 600px;
+}
+
+.consumables-container {
+    padding-bottom: 30px;
+    max-width: 300px;
 }
 
 .items-row {
