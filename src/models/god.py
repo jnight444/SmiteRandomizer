@@ -33,7 +33,6 @@ class God:
         self.ident = int(json['id'])
         self.icon_url = json['godIcon_URL']
         self.card_url = json['godCard_URL']
-        self.color = self.get_color()
 
     def split_attack_info(self, data: str) -> None:
         type_list = data.split(',')
@@ -44,12 +43,4 @@ class God:
         else:
             self.attack_type = AttackType[type_list[0].strip()]
             self.attack_range = 'None'
-
-    def get_color(self) -> str:
-        return image_handler.get_average_color(
-            self.ability_1.url,
-            self.ability_2.url,
-            self.ability_3.url,
-            self.ultimate.url
-        )
 
